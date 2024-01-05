@@ -35,7 +35,7 @@ resource "azurerm_network_security_group""aks-nsg" {
 
 
 
-    name = "aks network security group"
+    name = "aks_network_security_group"
     location = var.location
     resource_group_name = azurerm_resource_group.azure_resource_name.name 
 
@@ -45,10 +45,11 @@ resource "azurerm_network_security_group""aks-nsg" {
 
     security_rule{
         name                       = "kube-apiserver"
-        priority                   = 100
+        priority                   = 1001
         direction                  = "Inbound"
         access                     = "Allow"
         protocol                   = "Tcp"
+        source_port_range          = "*"
         source_address_prefix      = "31.121.129.114/32"
         destination_port_range     = "443"
         destination_address_prefix  = "*"
@@ -58,12 +59,13 @@ resource "azurerm_network_security_group""aks-nsg" {
 
     security_rule{
         name                       = "ssh-rule"
-        priority                   = 100
+        priority                   = 1002
         direction                  = "Inbound"
         access                     = "Allow"
         protocol                   = "Tcp"
         source_port_range          = "*"
         destination_port_range     = "22"
+        source_address_prefix       = "31.121.129.114/32"
         destination_address_prefix  = "*"
         
         

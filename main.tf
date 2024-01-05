@@ -31,15 +31,19 @@ module "aks_cluster" {
 
   source = "./aks-cluster-module"
 
+  aks_cluster_name = "terraform-aks-cluster"
+  kubernetes_version = "1.26.6"
+  cluster_location = "UK South"
+
   dns_prefix = "myaks-project"
   service_principle_client_id = var.client_id
   service_principle_secret = var.client_secret
 
 
-  resource_group_name         = module.networking.resource_group_name
+  resource_group_name         = module.networking.networking_resource_group_name
   vnet_id                     = module.networking.vnet_id
   control_plane_subnet_id     = module.networking.control_plane_subnet_id
-  worker_node_subnet_id       = module.networking.worker_node_subnet_id
+  worker_node_subnet_id       = module.networking.worker_plane_subnet_id
   
 
 

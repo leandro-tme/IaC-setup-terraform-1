@@ -9,7 +9,10 @@ resource "azurerm_kubernetes_cluster" "aks_cluster" {
     name       = "default"
     node_count = 1
     vm_size    = "Standard_DS2_v2"  
-    vnet_subnet_id = var.control_plane_subnet_id  
+    vnet_subnet_id = var.control_plane_subnet_id
+    enable_auto_scaling = true
+    min_count = 1
+    max_count = 3
   }
 
   service_principal {
@@ -19,6 +22,9 @@ resource "azurerm_kubernetes_cluster" "aks_cluster" {
 
   network_profile {
     network_plugin = "azure"  
+    service_cidr = "10.0.3.0/24"
+    dns_service_ip = "10.0.3.10"
+    docker_bridge_cidr = "172.17.0.1/16"
     
   }
 
