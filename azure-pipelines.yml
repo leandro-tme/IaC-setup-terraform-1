@@ -10,7 +10,7 @@ pool:
   vmImage: ubuntu-latest
   parallel: 1
 
-
+steps:
 - task: Docker@2
   inputs:
     containerRegistry: 'Docker Hub'
