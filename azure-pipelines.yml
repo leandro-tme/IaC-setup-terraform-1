@@ -20,11 +20,11 @@ steps:
     tags: 'latest'
     
 
-- task: kubernetesManifest@1
-  inputs: 
-    action: 'deploy'
-    connectionType: 'azureResourceManager'
-    azureSubscriptionConnection: 'aks-service-connection'
-    azureResourceGroup: 'aks-rg'
-    kubernetesCluster: 'aks-demo'
-    manifests: 'deployments-manifest.yml'
+# - task: kubernetesManifest@1
+#   inputs: 
+#     action: 'deploy'
+#     connectionType: 'azureResourceManager'
+#     azureSubscriptionConnection: 'aks-service-connection'
+#     azureResourceGroup: 'aks-rg'
+#     kubernetesCluster: 'aks-demo'
+#     manifests: 'deployments-manifest.yml'
