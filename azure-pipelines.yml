@@ -12,6 +12,7 @@ pool:
 steps:
 - task: Docker@2
   inputs:
+    containerRegistry: 'Docker Hub'
     repository: 'leandrot1/test-pipeline'
     command: 'buildAndPush'
     Dockerfile: '**/Dockerfile'
