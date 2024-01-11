@@ -10,12 +10,12 @@ pool:
   vmImage: ubuntu-latest
   parallel: 1
 
-steps:
 - task: Docker@2
   inputs:
     containerRegistry: 'Docker Hub'
-    repository: 'leandrot1/web-app-test'
-    command: 'BuildandPush'
+    repository: 'leandrot1 / web-app-test'
+    command: 'buildAndPush'
+    Dockerfile: '**/Dockerfile'
     tags: 'test'
     
 
